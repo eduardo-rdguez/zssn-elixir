@@ -8,8 +8,7 @@ defmodule ZssnElixir.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: ZssnElixir.Worker.start_link(arg)
-      # {ZssnElixir.Worker, arg}
+      {Plug.Cowboy, scheme: :http, plug: ZssnElixir.Router, options: [port: 8080]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
